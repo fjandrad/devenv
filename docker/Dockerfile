@@ -17,6 +17,8 @@ LABEL \
 # Change default shell to bash. This is effective only in the Dockerfile.
 SHELL ["/bin/bash", "-c"]
 
+COPY xenial-source.txt /etc/apt/sources.list
+
 RUN apt-get update &&\
     apt-get install -y --no-install-recommends \
         sudo \
