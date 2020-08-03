@@ -1,4 +1,4 @@
-default: latest intel nvidia
+default: latest intel nvidia pal
 
 latest: intel
 	docker tag diegoferigo/devenv:intel diegoferigo/devenv:latest
@@ -17,6 +17,14 @@ nvidia:
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 		--tag diegoferigo/devenv:nvidia \
+		.
+
+pal:
+	docker build --rm \
+		--build-arg from=registry.gitlab.com/pal-robotics/waterloo-university-reem-c/dockers/reemc-7-erbium \
+		--build-arg VCS_REF=`git rev-parse --short HEAD` \
+		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+		--tag fjandrad/devenv:pal \
 		.
 
 # TODO
